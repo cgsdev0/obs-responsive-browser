@@ -5,7 +5,6 @@ function script_load(settings)
         local scenes = obs.obs_frontend_get_scenes()
         for _, scene in pairs(scenes) do
                 local name = obs.obs_source_get_name(scene)
-                print(name)
                 local sh = obs.obs_source_get_signal_handler(scene)
                 obs.signal_handler_connect(sh, "item_transform", item_transform)
         end
