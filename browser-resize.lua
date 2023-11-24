@@ -7,26 +7,39 @@ function script_load(settings)
                 local name = obs.obs_source_get_name(scene)
                 local sh = obs.obs_source_get_signal_handler(scene)
                 obs.signal_handler_connect(sh, "item_transform", item_transform)
-                obs.signal_handler_connect(sh, "activate", activate)
+                
         end
         obs.source_list_release(scenes)
+
+        local sh = obs.obs_get_signal_handler()
+        obs.signal_handler_connect(sh, "source_create", source_create)
+        obs.signal_handler_connect(sh, "source_activate", source_activate)
 end
 
-function activate(cd)
+function source_create(cd)
+        local source = obs.calldata_source(cd, "source")
+        if obs.obs_source_is_scene(source) then
+                local name = obs.obs_source_get_name(scene)
+                local sh = obs.obs_source_get_signal_handler(source)
+                obs.signal_handler_connect(sh, "item_transform", item_transform)
+        end
+end
+
+function source_activate(cd)
         local source = obs.calldata_source(cd, "source")
         local name = obs.obs_source_get_name(source)
-        print(name)
 
         local scene = obs.obs_scene_from_source(source)
         -- find all of the items in the new scene
+        -- TODO: use obs_scene_find_source_recursive instead
         local items = obs.obs_scene_enum_items(scene)
         for _, item in ipairs(items) do
-                fit_to_bounds(item)
+                fit_to_bounds(item, true)
         end
         obs.sceneitem_list_release(items)
 end
 
-function fit_to_bounds(item)
+function fit_to_bounds(item, skip_cache)
         source = obs.obs_sceneitem_get_source(item)
         local source_type = obs.obs_source_get_unversioned_id(source)
 
@@ -49,6 +62,6 @@ end
 function item_transform(cd)
         local item = obs.calldata_sceneitem(cd, "item")
         if item ~= nil then
-                fit_to_bounds(item)
+                fit_to_bounds(item, false)
 	end
 end
