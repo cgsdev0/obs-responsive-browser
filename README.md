@@ -18,4 +18,4 @@ that's it!
 
 the script attempts to resize all instances of the browser source, across all scenes.
 
-_**caveat**_: this is currently evaluated _lazily_. the scenes will not update until you switch to them. i tried my best ¯\_(ツ)_/¯
+_**caveat**_: this is currently evaluated _lazily_. the scenes will not update until you switch to them. i tried my best ¯\\\_(ツ)\_/¯
