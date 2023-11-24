@@ -2,7 +2,8 @@
 
 this is a script for OBS that allows you to create responsive browser sources (i.e. resizing the source in OBS resizes the window of the browser)
 
-![just_too_easy](https://github.com/cgsdev0/obs-responsive-browser/assets/4583705/04e0d041-c405-4237-9d0d-8eb05c60d788)
+![resizer](https://github.com/cgsdev0/obs-responsive-browser/assets/4583705/3b907025-378e-4f06-82b5-73b9ef371fe8)
+
 
 ## tutorial
 
@@ -16,6 +17,4 @@ that's it!
 
 ## notes
 
-the script attempts to resize all instances of the browser source, across all scenes.
-
-_**caveat**_: this is currently evaluated _lazily_. the scenes will not update until you switch to them. i tried my best ¯\\\_(ツ)\_/¯
+transitioning directly between scenes with differently sized bounding boxes causes a bit of jank ¯\\\_(ツ)\_/¯
