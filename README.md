@@ -18,3 +18,6 @@ that's it!
 ## notes
 
 transitioning directly between scenes with differently sized bounding boxes causes a bit of jank ¯\\\_(ツ)\_/¯
+
+if using studio mode, this will not work unless you disable "Duplicate Scene"
+![image](https://github.com/cgsdev0/obs-responsive-browser/assets/4583705/ea2fdd93-0de7-4c1a-b5b4-fae149b49316)
